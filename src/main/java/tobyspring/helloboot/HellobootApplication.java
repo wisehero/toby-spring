@@ -20,7 +20,7 @@ public class HellobootApplication {
 		// 톰캣을 쉽게 띄우기 위한 코드, 복잡한 과정 및 설정 없이 톰캣 서블릿 띄우기 가능
 		TomcatServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
 		WebServer webServer = serverFactory.getWebServer(servletContext -> {
-
+			HelloController helloController = new HelloController();
 			// 인증, 보안, 다국어, 공통 기능
 			servletContext.addServlet("frontController", new HttpServlet() {
 				@Override
@@ -30,9 +30,11 @@ public class HellobootApplication {
 					if (req.getRequestURI().equals("/hello") && req.getMethod().equals(HttpMethod.GET.name())) {
 						String name = req.getParameter("name");
 
+						String ret = helloController.hello(name);
+
 						resp.setStatus(HttpStatus.OK.value());
 						resp.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE);
-						resp.getWriter().println("Hello " + name);
+						resp.getWriter().println(ret);
 					} else if (req.getRequestURI().equals("/user")) {
 						// Process Something
 					} else {
