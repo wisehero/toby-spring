@@ -8,7 +8,7 @@ import tobyspring.config.MyAutoConfiguration;
 
 @MyAutoConfiguration
 public class TomcatWebServerConfig {
-	@Bean
+	@Bean("tomcatWebServerFactory")
 	public ServletWebServerFactory servletWebServerFactory() {
 		return new TomcatServletWebServerFactory();
 	}
