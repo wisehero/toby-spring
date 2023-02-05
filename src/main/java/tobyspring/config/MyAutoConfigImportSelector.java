@@ -7,8 +7,6 @@ import org.springframework.boot.context.annotation.ImportCandidates;
 import org.springframework.context.annotation.DeferredImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
 
-import tobyspring.config.MyAutoConfiguration;
-
 public class MyAutoConfigImportSelector implements DeferredImportSelector {
 
 	private final ClassLoader classLoader;
