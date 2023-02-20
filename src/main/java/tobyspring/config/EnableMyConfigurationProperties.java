@@ -11,4 +11,5 @@ import org.springframework.context.annotation.Import;
 @Target(ElementType.TYPE)
 @Import(MyConfigurationPropertiesImportSelector.class)
 public @interface EnableMyConfigurationProperties {
+	Class<?> value();
 }
